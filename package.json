@@ -9,7 +9,6 @@
     "path": "^0.12.7"
   },
   "scripts": {
-    "build-tail": "NODE_ENV=production tailwindcss build -i public/input.css -o public/output.css"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.3.1",
