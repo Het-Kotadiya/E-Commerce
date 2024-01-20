@@ -98,7 +98,7 @@ const productData = [
     {
         title: "Classic Denim Jacket",
         desc: "Timeless denim jacket for men",
-        img: "mens_denim_jacket.jpg",
+        img: "https://images.unsplash.com/photo-1537465978529-d23b17165b3b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZGVuaW0lMjBqYWNrZXR8ZW58MHwwfDB8fHww",
         categories: ["Jackets", "Men's Fashion"],
         size: ["S", "M", "L", "XL"],
         color: ["Blue"],
@@ -110,7 +110,7 @@ const productData = [
     {
         title: "Elegant Blouse",
         desc: "Sophisticated blouse for women",
-        img: "womens_elegant_blouse.jpg",
+        img: "https://images.unsplash.com/photo-1589734750443-06dbd51c0447?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvdXNlfGVufDB8MHwwfHx8MA%3D%3D",
         categories: ["Tops", "Women's Fashion"],
         size: ["XS", "S", "M", "L"],
         color: ["White", "Black"],
@@ -122,7 +122,7 @@ const productData = [
     {
         title: "Graphic T-Shirt",
         desc: "Fun graphic t-shirt for boys",
-        img: "boys_graphic_tshirt.jpg",
+        img: "https://images.unsplash.com/photo-1483380011777-35c78117be19?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGNhcnRvb24lMjB0c2hpcnR8ZW58MHwwfDB8fHww",
         categories: ["T-Shirts", "Boys' Apparel"],
         size: ["4-6", "8-10", "12-14"],
         color: ["Red", "Blue"],
@@ -134,7 +134,7 @@ const productData = [
     {
         title: "Floral Sundress",
         desc: "Adorable floral sundress for girls",
-        img: "girls_floral_sundress.jpg",
+        img: "https://images.unsplash.com/photo-1665375457737-dd963819a575?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZmxvcmFsJTIwc3VuJTIwZHJlc3N8ZW58MHwwfDB8fHww",
         categories: ["Dresses", "Girls' Fashion"],
         size: ["6-8", "10-12", "14-16"],
         color: ["Pink", "Yellow"],
@@ -146,7 +146,7 @@ const productData = [
     {
         title: "Sporty Joggers",
         desc: "Comfortable joggers for an active lifestyle",
-        img: "mens_sporty_joggers.jpg",
+        img: "https://images.unsplash.com/photo-1580906853305-5702e648164e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8am9nZ2Vyc3xlbnwwfDB8MHx8fDA%3D",
         categories: ["Athletic Wear", "Men's Bottoms"],
         size: ["S", "M", "L", "XL"],
         color: ["Black", "Gray"],
@@ -158,7 +158,7 @@ const productData = [
     {
         title: "Casual Sneakers",
         desc: "Stylish and comfortable sneakers for women",
-        img: "womens_casual_sneakers.jpg",
+        img: "https://images.unsplash.com/photo-1695073621086-aa692bc32a3d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2FzdWFsJTIwc25lYWtlcnN8ZW58MHwwfDB8fHww",
         categories: ["Footwear", "Women's Shoes"],
         size: ["6", "7", "8", "9"],
         color: ["White", "Rose Gold"],
@@ -170,7 +170,7 @@ const productData = [
     {
         title: "Hooded Sweatshirt",
         desc: "Cozy hooded sweatshirt for boys",
-        img: "boys_hooded_sweatshirt.jpg",
+        img: "https://images.unsplash.com/photo-1484663548870-2aa675ba38fb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c3dlYXRzaGlydHxlbnwwfDB8MHx8fDA%3D",
         categories: ["Sweatshirts", "Boys' Apparel"],
         size: ["4-6", "8-10", "12-14"],
         color: ["Blue", "Green"],
@@ -182,7 +182,7 @@ const productData = [
     {
         title: "Denim Skirt",
         desc: "Trendy denim skirt for girls",
-        img: "girls_denim_skirt.jpg",
+        img: "https://images.unsplash.com/photo-1593756287137-df3c9b0bd731?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNraXJ0fGVufDB8MHwwfHx8MA%3D%3D",
         categories: ["Skirts", "Girls' Fashion"],
         size: ["6-8", "10-12", "14-16"],
         color: ["Denim Blue"],
@@ -194,7 +194,7 @@ const productData = [
     {
         title: "Formal Suit",
         desc: "Classic formal suit for men",
-        img: "mens_formal_suit.jpg",
+        img: "https://images.unsplash.com/photo-1508243529287-e21914733111?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZvcm1hbCUyMHN1aXR8ZW58MHwwfDB8fHww",
         categories: ["Suits", "Men's Fashion"],
         size: ["S", "M", "L", "XL"],
         color: ["Black", "Navy"],
@@ -206,7 +206,7 @@ const productData = [
     {
         title: "Winter Coat",
         desc: "Warm winter coat for women",
-        img: "womens_winter_coat.jpg",
+        img: "https://images.unsplash.com/photo-1548950939-629ecb4d7101?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ludGVyJTIwY29hdHxlbnwwfDB8MHx8fDA%3D",
         categories: ["Outerwear", "Women's Fashion"],
         size: ["XS", "S", "M", "L"],
         color: ["Red", "Brown"],
@@ -218,7 +218,7 @@ const productData = [
     {
         title: "Camouflage Pants",
         desc: "Cool camouflage pants for boys",
-        img: "boys_camouflage_pants.jpg",
+        img: "https://images.unsplash.com/photo-1534984316778-4491ec217ecf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Q2Ftb3VmbGFnZSUyMHBhbnRzfGVufDB8MHwwfHx8MA%3D%3D",
         categories: ["Pants", "Boys' Apparel"],
         size: ["4-6", "8-10", "12-14"],
         color: ["Green", "Brown"],
@@ -230,7 +230,7 @@ const productData = [
     {
         title: "Ruffled Blouse",
         desc: "Charming ruffled blouse for girls",
-        img: "girls_ruffled_blouse.jpg",
+        img: "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8UnVmZmxlZCUyMEJsb3VzZXxlbnwwfDB8MHx8fDA%3D",
         categories: ["Tops", "Girls' Fashion"],
         size: ["6-8", "10-12", "14-16"],
         color: ["Pink", "White"],
@@ -242,7 +242,7 @@ const productData = [
     {
         title: "Graphic Tee",
         desc: "Casual graphic tee for men",
-        img: "mens_graphic_tee.jpg",
+        img: "https://images.unsplash.com/photo-1482618606784-2ca7968c062e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHByaW50ZWQlMjB0c2hpcnR8ZW58MHwwfDB8fHww",
         categories: ["T-Shirts", "Men's Fashion"],
         size: ["S", "M", "L", "XL"],
         color: ["Gray", "Black"],
@@ -254,7 +254,7 @@ const productData = [
     {
         title: "High-Waisted Jeans",
         desc: "Trendy high-waisted jeans for a stylish look",
-        img: "high_waisted_jeans.jpg",
+        img: "https://images.pexels.com/photos/9558246/pexels-photo-9558246.jpeg?auto=compress&cs=tinysrgb&w=600",
         categories: ["Jeans", "Bottoms"],
         size: ["XS", "S", "M", "L"],
         color: ["Blue", "Black"],
@@ -266,7 +266,7 @@ const productData = [
     {
         title: "Varsity Jacket",
         desc: "Sporty varsity jacket for a cool and casual look",
-        img: "varsity_jacket.jpg",
+        img: "https://images.unsplash.com/photo-1561748138-35c7c69cf3bf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHZhcnNpdHklMjBqYWNrZXR8ZW58MHwwfDB8fHww",
         categories: ["Jackets", "Fashion"],
         size: ["S", "M", "L", "XL"],
         color: ["Navy", "Red"],
@@ -278,7 +278,7 @@ const productData = [
     {
         title: "Sequin Dress",
         desc: "Sparkly sequin dress for a glamorous night out",
-        img: "sequin_dress.jpg",
+        img: "https://images.unsplash.com/photo-1595156210483-560123baba96?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGRyZXNzfGVufDB8MHwwfHx8MA%3D%3D",
         categories: ["Dresses", "Fashion"],
         size: ["6-8", "10-12", "14-16"],
         color: ["Silver", "Gold"],
@@ -290,7 +290,7 @@ const productData = [
     {
         title: "Leather Biker Jacket",
         desc: "Edgy leather biker jacket for a bold style",
-        img: "leather_biker_jacket.jpg",
+        img: "https://images.unsplash.com/photo-1542018751212-595220ec6db7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmlkZSUyMGphY2tldHxlbnwwfDB8MHx8fDA%3D",
         categories: ["Jackets", "Fashion"],
         size: ["S", "M", "L", "XL"],
         color: ["Black"],
@@ -302,7 +302,7 @@ const productData = [
     {
         title: "Boho Maxi Dress",
         desc: "Bohemian-style maxi dress for a free-spirited look",
-        img: "boho_maxi_dress.jpg",
+        img: "https://images.pexels.com/photos/6387638/pexels-photo-6387638.jpeg?auto=compress&cs=tinysrgb&w=600",
         categories: ["Dresses", "Fashion"],
         size: ["XS", "S", "M", "L"],
         color: ["Floral", "Blue"],
