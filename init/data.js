@@ -2,7 +2,7 @@ const productData = [
     {
         title: "Cotton Casual T-Shirt",
         desc: "Comfortable and breathable casual t-shirt made from high-quality cotton.",
-        img: "https://images.unsplash.com/photo-1495554626159-905646f110da?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dHNoaXJ0JTIwbW9kZWx8ZW58MHwwfDB8fHww",
+        img: "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dHNoaXJ0JTIwbWVufGVufDB8MHwwfHx8MA%3D%3D",
         categories: ["Casual Wear", "T-Shirts"],
         size: ["S", "M", "L"],
         color: ["White", "Black", "Blue"],
@@ -14,7 +14,7 @@ const productData = [
     {
         title: "Slim Fit Denim Jeans",
         desc: "Stylish and slim-fit denim jeans for a trendy look.",
-        img: "https://images.unsplash.com/photo-1507297448044-a99b358cd06e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZGVuaW0lMjBqZWFuc3xlbnwwfDB8MHx8fDA%3D",
+        img: "https://images.unsplash.com/photo-1560243563-062bfc001d68?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGglMjZtJTIwamVhbnN8ZW58MHwwfDB8fHww",
         categories: ["Denim", "Jeans"],
         size: ["28", "30", "32", "34"],
         color: ["Blue", "Black"],
