@@ -28,8 +28,6 @@ app.use(express.static(path.join(__dirname, 'views/listings')))
 app.engine('ejs', ejsMate)
 
 app.get('/', async (req, res) => {
-    // res.render('listings/index.ejs')
-    // res.redirect('/products')
     const dataItem = await Product.find({})
     res.render('listings/index.ejs', { dataItem })
 })
@@ -44,6 +42,12 @@ app.get('/products/:id', async (req, res) => {
     let { id } = req.params;
     const product = await Product.findById(id)
     res.render('listings/display.ejs', { product })
+})
+
+
+// login signup
+app.get('/login', (req, res) => {
+    res.render('listings/login.ejs')
 })
 
 
