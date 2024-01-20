@@ -26,7 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'assets')))
 app.use(express.static(path.join(__dirname, 'views/listings')))
 app.engine('ejs', ejsMate)
-const randomDiscountPercentage = Math.floor(Math.random() * (65 - 10 + 1) + 10)
 
 app.get('/', async (req, res) => {
     // res.render('listings/index.ejs')
@@ -44,8 +43,7 @@ app.get('/products', async (req, res) => {
 app.get('/products/:id', async (req, res) => {
     let { id } = req.params;
     const product = await Product.findById(id)
-    const randomDiscountPercentage = req.query.randomDiscountPercentage
-    res.render('listings/show.ejs', { product })
+    res.render('listings/display.ejs', { product })
 })
 
 

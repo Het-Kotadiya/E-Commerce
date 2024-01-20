@@ -1,0 +1,82 @@
+<% layout('layouts/boilerplate') %>
+<div
+  class="w-full h-screen sm:h-full px-5 flex flex-col mt-[20%] justify-center sm:flex-row sm:justify-between sm:mt-10 mb-8"
+>
+  <div class="w-full sm:w-[47%]">
+    <img src="<%= product.img%>" alt="" />
+  </div>
+
+  <div class="w-full mt-7 sm:w-[50%] h-full">
+    <h1 class="text-4xl"><%= product.title %></h1>
+    <p class="mt-5 text-2xl font-light"><%= product.desc %></p>
+    <div class="w-[150px] flex items-center justify-around mt-7">
+      <span class="font-thin text-5xl">$</span>
+      <p class="text-5xl font-thin"><%= product.price %></p>
+    </div>
+
+    <!-- Dropdowns -->
+    <div class="w-[220px] h-8 flex items-center justify-between mt-7">
+      <div class="w-[50%] h-full flex items-center justify-center">
+        <select
+          name="color"
+          id="color"
+          class="h-full border-[1.5px] border-black/60 px-2 text-xl font-extralight text-center "
+        >
+          <option value="Colors" disabled selected>Colors</option>
+          <% for(let colors of product.color) {%>
+          <option value="<%=colors%>"><%=colors%></option>
+          <% } %>
+        </select>
+      </div>
+
+      <div class="w-[50%] h-full flex items-center justify-center">
+        <select
+          name="color"
+          id="color"
+          class="h-full border-[1.5px] border-black/60 text-xl font-extralight text-center"
+        >
+          <option value="Size" disabled selected>Size</option>
+          <% for(let sizes of product.size) {%>
+          <option value="<%=sizes%>"><%=sizes%></option>
+          <% } %>
+        </select>
+      </div>
+    </div>
+
+    <!-- no.of Items and add to cart btn -->
+    <div class="w-[45%] sm:w-[38%] h-10 mt-7 flex items-center justify-between">
+      <div class="w-[50%] h-full flex items-center justify-around ">
+        <i class="fa-solid fa-minus cursor-pointer" id="minus"></i>
+        <div class="border-[1.5px] border-black w-8 h-8 text-center rounded-lg">
+          <h1 class="text-lg" id="display"></h1>
+        </div>
+        <i class="fa-solid fa-plus cursor-pointer" id="add"></i>
+      </div>
+
+      <!-- btn -->
+      <button
+        class="w-fit px-4 py-1 font-light border-[1.5px] border-black bg-white/50 hover:bg-black hover:text-white transition duration-300 ease-in-out"
+      >
+       ADD
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let add = document.getElementById("add");
+  let minus = document.getElementById("minus");
+  let display = document.getElementById("display");
+  let counter = 1;
+  display.innerText = counter;
+  add.addEventListener("click", () => {
+    counter++;
+    display.innerText = counter;
+  });
+  minus.addEventListener("click", () => {
+    if (counter > 1) {
+      counter--;
+      display.innerText = counter;
+    }
+  });
+</script>
