@@ -38,7 +38,7 @@ app.get('/', async (req, res) => {
 // This method routes HTTP GET requests to the specified callback function
 app.get('/products', async (req, res) => {
     const dataItem = await Product.find({})
-    res.render('listings/show.ejs', { dataItem })
+    res.render('listings/showProduct.ejs', { dataItem })
 })
 
 app.get('/products/:id', async (req, res) => {
