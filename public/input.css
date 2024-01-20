@@ -72,4 +72,8 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  .list {
+    @apply hover:bg-black/40;
+  }
 }
