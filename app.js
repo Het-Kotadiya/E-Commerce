@@ -29,14 +29,15 @@ app.engine('ejs', ejsMate)
 const randomDiscountPercentage = Math.floor(Math.random() * (65 - 10 + 1) + 10)
 
 app.get('/', (req, res) => {
-    res.render('listings/index.ejs')
+    // res.render('listings/index.ejs')
+    res.redirect('/products')
 })
 
 // This method routes HTTP GET requests to the specified callback function
-// app.get('/products', async (req, res) => {
-//     const dataItem = await Product.find({})
-//     res.render('listings/index.ejs', { dataItem })
-// })
+app.get('/products', async (req, res) => {
+    const dataItem = await Product.find({})
+    res.render('listings/index.ejs', { dataItem })
+})
 
 app.get('/products/:id', async (req, res) => {
     let { id } = req.params;
