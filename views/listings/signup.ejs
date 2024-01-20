@@ -1,0 +1,76 @@
+<% layout('layouts/boilerplate') %>
+<div class="w-full h-screen sm:h-full flex items-center justify-center sm:mt-8 mb-8">
+  <div class="w-[350px] h-[450px] px-3 py-5 border-[1.5px] border-black">
+    <form action="">
+
+      <div class="flex flex-col mb-8">
+        <label for="email" class="text-2xl mb-1">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          class="rounded-md h-8 px-3 text-lg border-[1.5px] border-black"
+          placeholder="john123@gmail.com"
+          required
+        />
+      </div>
+
+      <div class="flex flex-col mb-8">
+        <label for="email" class="text-2xl mb-1">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="rounded-md h-8 px-3 text-lg border-[1.5px] border-black"
+          placeholder="john123@gmail.com"
+          required
+        />
+      </div>
+
+      <div class="flex flex-col mb-5 relative">
+        <label for="password" class="text-2xl mb-1">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="rounded-md h-8 px-3 text-xl border-[1.5px] border-black"
+          required
+        />
+        <i
+          class="fa-regular fa-eye absolute top-[37px] right-2 text-xl cursor-pointer"
+          id="see"
+        ></i>
+        <i
+          class="hidden fa-regular fa-eye-slash absolute top-[37px] right-2 text-xl cursor-pointer"
+          id="hide"
+        ></i>
+      </div>
+
+      <button
+        class="w-full text-3xl border-[1.5px] border-black bg-green-200 py-1 hover:bg-green-300 font-medium drop-shadow-xl mb-2"
+        type="submit"
+      >
+        SignUp
+      </button>
+    </form>
+    <a href="/login" class="text-lg font-light">Already have account? Login Up</a>
+</div>
+</div>
+
+<script>
+  let see = document.getElementById("see");
+  let hide = document.getElementById("hide");
+  let password = document.getElementById("password");
+
+  see.addEventListener("click", () => {
+    see.classList.add("hidden");
+    hide.classList.remove("hidden");
+    password.type = "text";
+  });
+
+  hide.addEventListener("click", () => {
+    see.classList.remove("hidden");
+    hide.classList.add("hidden");
+    password.type = "password";
+  });
+</script>

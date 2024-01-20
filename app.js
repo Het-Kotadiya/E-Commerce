@@ -50,6 +50,10 @@ app.get('/login', (req, res) => {
     res.render('listings/login.ejs')
 })
 
+app.get('/signup', (req, res) => {
+    res.render('listings/signup.ejs')
+})
+
 
 
 // This method listens for the connection on the specified port.
