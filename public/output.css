@@ -817,6 +817,10 @@ body {
   scroll-snap-align: center;
 }
 
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .flex-col{
   flex-direction: column;
 }
@@ -1129,16 +1133,8 @@ body {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .sm\:grid-rows-12{
-    grid-template-rows: repeat(12, minmax(0, 1fr));
-  }
-
   .sm\:grid-rows-2{
     grid-template-rows: repeat(2, minmax(0, 1fr));
-  }
-
-  .sm\:grid-rows-8{
-    grid-template-rows: repeat(8, minmax(0, 1fr));
   }
 
   .sm\:flex-row{
