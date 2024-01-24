@@ -699,6 +699,10 @@ body {
   margin-top: 2.5rem;
 }
 
+.mt-2{
+  margin-top: 0.5rem;
+}
+
 .mt-3{
   margin-top: 0.75rem;
 }
@@ -717,10 +721,6 @@ body {
 
 .mt-\[20\%\]{
   margin-top: 20%;
-}
-
-.mt-2{
-  margin-top: 0.5rem;
 }
 
 .flex{
@@ -820,22 +820,6 @@ body {
   height: 100vh;
 }
 
-.h-\[full\]{
-  height: full;
-}
-
-.h-\[500px\]{
-  height: 500px;
-}
-
-.h-\[30px\]{
-  height: 30px;
-}
-
-.h-\[300px\]{
-  height: 300px;
-}
-
 .w-8{
   width: 2rem;
 }
@@ -927,10 +911,6 @@ body {
 
 .snap-center{
   scroll-snap-align: center;
-}
-
-.flex-row{
-  flex-direction: row;
 }
 
 .flex-col{
@@ -1308,6 +1288,10 @@ body {
     display: grid;
   }
 
+  .sm\:h-\[300px\]{
+    height: 300px;
+  }
+
   .sm\:h-\[700px\]{
     height: 700px;
   }
@@ -1316,12 +1300,12 @@ body {
     height: 100%;
   }
 
-  .sm\:h-\[300px\]{
-    height: 300px;
-  }
-
   .sm\:w-\[25\%\]{
     width: 25%;
+  }
+
+  .sm\:w-\[32\.5\%\]{
+    width: 32.5%;
   }
 
   .sm\:w-\[32\.8\%\]{
@@ -1348,10 +1332,6 @@ body {
     width: 100%;
   }
 
-  .sm\:w-\[32\.5\%\]{
-    width: 32.5%;
-  }
-
   .sm\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1366,10 +1346,6 @@ body {
 
   .sm\:flex-row{
     flex-direction: row;
-  }
-
-  .sm\:flex-col{
-    flex-direction: column;
   }
 
   .sm\:justify-center{
