@@ -820,6 +820,10 @@ body {
   height: 100vh;
 }
 
+.h-\[550px\]{
+  height: 550px;
+}
+
 .w-8{
   width: 2rem;
 }
@@ -878,6 +882,10 @@ body {
 
 .w-\[54\%\]{
   width: 54%;
+}
+
+.w-\[550px\]{
+  width: 550px;
 }
 
 .w-\[99vw\]{
@@ -1203,6 +1211,10 @@ body {
 .outline-none{
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.outline{
+  outline-style: solid;
 }
 
 .drop-shadow-xl{

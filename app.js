@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV != 'production') {
+    require('dotenv').config()
+}
+
 const express = require('express')  // Imports express Framework into the webapp
 const app = express() // express() function returns an expressapp object
 const cookieParser = require('cookie-parser')
@@ -84,7 +88,8 @@ app.post('/signup', async (req, res) => {
     })
 
     let registeredUser = await User.register(newUser, req.body.password)
-    res.send(registeredUser)
+    // res.send(registeredUser)
+    res.redirect('/')
 })
 
 app.get('/login', (req, res) => {
