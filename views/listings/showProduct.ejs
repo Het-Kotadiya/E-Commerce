@@ -1,9 +1,44 @@
-<% layout('layouts/boilerplate') %>
+<% layout('layouts/boilerplate') %> <% let uniqueCategories = [...new
+Set(dataItem.flatMap(item => item.categories))] %>
+
+<div class="w-[100%] h-11 flex sm:flex-row items-center justify-around mt-3">
+  <form
+    action="/products"
+    method="get"
+    class="h-full w-full flex justify-around"
+  >
+    <select
+      name="price"
+      id="price"
+      class="h-full border-[1.5px] border-black/60 px-2 text-xl font-extralight text-center cursor-pointer"
+    >
+      <option value="None" disabled selected>Price</option>
+      <option value="Low To High">Low To High</option>
+      <option value="High To Low">High To Low</option>
+    </select>
+
+    <select
+      name="selectedCategory"
+      id="selectedCategory"
+      class="h-full border-[1.5px] border-black/60 px-2 text-xl font-extralight text-center cursor-pointer"
+    >
+      <option value="All Products" disabled selected>All Products</option>
+      <% for(let category of uniqueCategories) { %>
+      <option value="<%= category %>"><%= category %></option>
+      <% } %>
+    </select>
+    <button
+      class="h-full border-[1.5px] border-black/60 w-fit px-6 text-xl font-extralight hover:bg-black hover:text-white transition duration-300 ease-in-out"
+    >
+      Show
+    </button>
+  </form>
+</div>
+
 <div
   class="w-full h-full mt-3 px-4 grid grid-rows-auto sm:grid-cols-3 gap-1 grid-cols-auto"
 >
-  <!-- Item 1 -->
-  <% for(let item of dataItem) {%>
+  <% for(let item of filteredItems) {%>
   <div class="group relative">
     <img src=" <%= item.img %> " alt="" class="h-full w-full object-cover" />
 
@@ -18,8 +53,8 @@
         ></i>
         <a href="/products/<%= item.id%>">
           <i
-          class="fa-solid fa-magnifying-glass hidden group-hover:inline-block bg-white rounded-full h-[40px] w-[40px] text-center py-[7px] text-lg cursor-pointer"
-        ></i>
+            class="fa-solid fa-magnifying-glass hidden group-hover:inline-block bg-white rounded-full h-[40px] w-[40px] text-center py-[7px] text-lg cursor-pointer"
+          ></i>
         </a>
         <i
           class="fa-regular fa-heart hidden group-hover:inline-block bg-white rounded-full h-[40px] w-[40px] text-center py-[7px] text-lg cursor-pointer"

@@ -65,7 +65,21 @@ app.get('/', async (req, res) => {
 // This method routes HTTP GET requests to the specified callback function
 app.get('/products', async (req, res) => {
     const dataItem = await Product.find({})
-    res.render('listings/showProduct.ejs', { dataItem })
+    const selectedCategory = req.query.selectedCategory || 'All Products'
+    const sortOption = req.query.price || 'None';
+
+    const filteredItems = dataItem.filter(item => {
+        return selectedCategory === 'All Products' || item.categories.includes(selectedCategory)
+    })
+
+    if (sortOption === 'Low To High') {
+        filteredItems.sort((a, b) => a.price - b.price);
+    } else if (sortOption === 'High To Low') {
+        filteredItems.sort((a, b) => b.price - a.price);
+    }
+    
+    res.render('listings/showProduct.ejs', { dataItem: dataItem, filteredItems: filteredItems })
+
 })
 
 app.get('/products/:id', async (req, res) => {
