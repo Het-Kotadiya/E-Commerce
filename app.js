@@ -1,7 +1,3 @@
-if (process.env.NODE_ENV != 'production') {
-    require('dotenv').config()
-}
-
 const express = require('express')  // Imports express Framework into the webapp
 const app = express() // express() function returns an expressapp object
 const cookieParser = require('cookie-parser')
@@ -14,6 +10,7 @@ const path = require('path')
 const User = require('./models/user.js')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
+const MongoStore = require('connect-mongo')
 const port = 8080
 
 const MONGO_URL = 'mongodb://127.0.0.1/shopping'
@@ -36,14 +33,29 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'assets')))
 app.use(express.static(path.join(__dirname, 'views/listings')))
+app.use(express.static(path.join(__dirname, 'views/includes')))
 app.engine('ejs', ejsMate)
 app.use(cookieParser('secretCode'))
+
+const store = MongoStore.create({
+    mongoUrl: MONGO_URL,
+    crypto: {
+        secret: 'cookieSecretCode',
+    },
+    touchAfter: 3600 * 24
+})
+
+store.on('error', () => {
+    console.log('Mongo Session Store error')
+})
+
 const sesisonOptions = {
     secret: 'cookieSecretCode',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: {
-        expires: new Date(Date.now() + 30 * 60 * 1000)  // set to expire in 30 minutes.
+        expires: new Date(Date.now() + 30 * 60 * 1000),  // set to expire in 30 minutes.
+        httpOnly: true
     }
 }
 
@@ -85,12 +97,14 @@ app.get('/products', async (req, res) => {
 app.get('/products/:id', async (req, res) => {
     let { id } = req.params;
     const product = await Product.findById(id)
-    res.render('listings/display.ejs', { product })
+    const dataItem = await Product.find({})
+    res.render('listings/display.ejs', { product, dataItem })
 })
 
 // login & signup
-app.get('/signup', (req, res) => {
-    res.render('listings/signup.ejs')
+app.get('/signup', async (req, res) => {
+    const dataItem = await Product.find({})
+    res.render('listings/signup.ejs', { dataItem })
 })
 
 app.post('/signup', async (req, res) => {
@@ -102,12 +116,12 @@ app.post('/signup', async (req, res) => {
     })
 
     let registeredUser = await User.register(newUser, req.body.password)
-    // res.send(registeredUser)
     res.redirect('/login')
 })
 
-app.get('/login', (req, res) => {
-    res.render('listings/login.ejs')
+app.get('/login', async (req, res) => {
+    const dataItem = await Product.find({})
+    res.render('listings/login.ejs', { dataItem })
 })
 
 app.post('/login', passport.authenticate('local', {
@@ -118,10 +132,20 @@ app.post('/login', passport.authenticate('local', {
     }
 )
 
-app.get('/cart', (req, res) => {
-    res.render('listings/cart.ejs')
+app.get('/cart', async (req, res) => {
+    const dataItem = await Product.find({})
+    res.render('listings/cart.ejs', { dataItem })
 })
 
+
+app.post('/search', async (req, res) => {
+    const productTitle = req.body.productName
+    const product = await Product.findOne({ title: productTitle })
+    // console.log(product._id)
+    // res.send('done')
+    res.redirect(`/products/${product._id}`)
+
+})
 
 // This method listens for the connection on the specified port.
 // It is placed at end of the code because server must be configured fully before accepting the incoming requests
