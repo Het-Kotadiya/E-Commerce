@@ -77,7 +77,7 @@ app.get('/products', async (req, res) => {
     } else if (sortOption === 'High To Low') {
         filteredItems.sort((a, b) => b.price - a.price);
     }
-    
+
     res.render('listings/showProduct.ejs', { dataItem: dataItem, filteredItems: filteredItems })
 
 })
@@ -103,12 +103,20 @@ app.post('/signup', async (req, res) => {
 
     let registeredUser = await User.register(newUser, req.body.password)
     // res.send(registeredUser)
-    res.redirect('/')
+    res.redirect('/login')
 })
 
 app.get('/login', (req, res) => {
     res.render('listings/login.ejs')
 })
+
+app.post('/login', passport.authenticate('local', {
+    failureRedirect: '/login'
+}),
+    async (req, res) => {
+        res.redirect('/')
+    }
+)
 
 app.get('/cart', (req, res) => {
     res.render('listings/cart.ejs')
