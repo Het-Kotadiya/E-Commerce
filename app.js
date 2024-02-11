@@ -10,7 +10,8 @@ const path = require('path')
 const User = require('./models/user.js')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
-const MongoStore = require('connect-mongo')
+const flash = require('connect-flash')
+// const MongoStore = require('connect-mongo')
 const port = 8080
 
 const MONGO_URL = 'mongodb://127.0.0.1/shopping'
@@ -37,18 +38,6 @@ app.use(express.static(path.join(__dirname, 'views/includes')))
 app.engine('ejs', ejsMate)
 app.use(cookieParser('secretCode'))
 
-const store = MongoStore.create({
-    mongoUrl: MONGO_URL,
-    crypto: {
-        secret: 'cookieSecretCode',
-    },
-    touchAfter: 3600 * 24
-})
-
-store.on('error', () => {
-    console.log('Mongo Session Store error')
-})
-
 const sesisonOptions = {
     secret: 'cookieSecretCode',
     resave: true,
@@ -60,6 +49,7 @@ const sesisonOptions = {
 }
 
 app.use(session(sesisonOptions))
+app.use(flash())
 
 app.use(passport.initialize())
 app.use(passport.session())
@@ -141,8 +131,6 @@ app.get('/cart', async (req, res) => {
 app.post('/search', async (req, res) => {
     const productTitle = req.body.productName
     const product = await Product.findOne({ title: productTitle })
-    // console.log(product._id)
-    // res.send('done')
     res.redirect(`/products/${product._id}`)
 
 })
