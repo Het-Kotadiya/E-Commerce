@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session')
 const mongoose = require('mongoose')
 const Product = require('./models/product.js')
+const Order = require('./models/order.js')
 const ejsMate = require('ejs-mate')
 const path = require('path')
 const User = require('./models/user.js')
@@ -12,7 +13,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const flash = require('connect-flash')
 // const MongoStore = require('connect-mongo')
-const port = 8080
+const port = 8000
 
 const MONGO_URL = 'mongodb://127.0.0.1/shopping'
 
@@ -107,6 +108,36 @@ app.post('/signup', async (req, res) => {
 
     let registeredUser = await User.register(newUser, req.body.password)
     res.redirect('/login')
+})
+
+app.post('/order/:id/:price', async (req, res) => {
+    console.log(req.user.id)
+    console.log(req.params.price)
+    console.log(req.params.id)
+    console.log(req.body)
+    const newProduct = {
+        productId: req.params.id,
+        quantity: req.body.quantity,
+        size: req.body.size,
+        color: req.body.color,
+    }
+
+    let newOrder = new Order({
+        userId: req.user.id,
+        products: [newProduct],
+        amount: req.params.price,
+    })
+    newOrder.save()
+    .then(savedOrder => {
+        // Successfully saved to the database
+        res.redirect('/products')
+    })
+    .catch(error => {
+        // Handle the error if the order couldn't be saved
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    });
+    
 })
 
 app.get('/login', async (req, res) => {
