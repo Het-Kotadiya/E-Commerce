@@ -111,21 +111,20 @@ app.post('/signup', async (req, res) => {
 })
 
 app.post('/order/:id/:price', async (req, res) => {
-    console.log(req.user.id)
-    console.log(req.params.price)
-    console.log(req.params.id)
-    console.log(req.body)
-    const newProduct = {
+    // console.log(req.user.id)
+    // console.log(req.params.price)
+    // console.log(req.params.id)
+    // console.log(req.body)
+    const product = await Product.findById(req.params.id)
+    let newOrder = new Order({
+        userId: req.user.id,
         productId: req.params.id,
         quantity: req.body.quantity,
         size: req.body.size,
         color: req.body.color,
-    }
-
-    let newOrder = new Order({
-        userId: req.user.id,
-        products: [newProduct],
         amount: req.params.price,
+        productTitle: product.title,
+        productImg: product.img,
     })
     newOrder.save()
     .then(savedOrder => {
@@ -154,7 +153,7 @@ app.post('/login', passport.authenticate('local', {
 )
 
 app.get('/cart', async (req, res) => {
-    const dataItem = await Product.find({})
+    const dataItem = await Order.find({ userId: req.user.id })
     res.render('listings/cart.ejs', { dataItem })
 })
 

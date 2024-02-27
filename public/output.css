@@ -824,6 +824,10 @@ body {
   height: 100vh;
 }
 
+.w-10{
+  width: 2.5rem;
+}
+
 .w-8{
   width: 2rem;
 }
@@ -895,10 +899,6 @@ body {
 
 .w-full{
   width: 100%;
-}
-
-.w-10{
-  width: 2.5rem;
 }
 
 .flex-shrink-0{

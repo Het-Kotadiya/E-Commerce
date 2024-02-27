@@ -1,107 +1,79 @@
 <% layout('layouts/boilerplate') %>
-<h1 class="text-4xl text-center mt-5 font-extralight">YOUR CART</h1>
-<div class="w-full h-full flex items-center justify-between mt-5 px-5">
-  <!-- Products added -->
-  <div class="w-[54%] h-full flex flex-col items-center justify-center">
-    <div class="w-[100%] h-[200px] flex border-b-[1.5px] border-black/20 mt-3">
-      <!-- Image div -->
-      <div class="w-[250px] mr-4">
-        <img
-          src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGNsb3RoZXN8ZW58MHwwfDB8fHww"
-          alt=""
-        />
-      </div>
+<% let subtotal = 0 %>
+  <h1 class="text-4xl text-center mt-5 font-extralight">YOUR CART</h1>
 
-      <!-- Details div -->
-      <div class="w-[50%] flex flex-col justify-around mr-10">
-        <div>
-          <span class="font-bold mr-3 text-xl">Product :</span>
-          <span class="font-extralight text-xl">DENIM JACKET</span>
-        </div>
-        <div>
-          <span class="font-bold mr-2 text-xl">Id :</span>
-          <span class="font-extralight text-xl">1234567890</span>
-        </div>
-        <div>
-          <span class="font-bold mr-2 text-xl">Color :</span>
-          <span class="font-extralight text-xl">WHITE</span>
-        </div>
-        <div>
-          <span class="font-bold mr-2 text-xl">Size :</span>
-          <span class="font-extralight text-xl">XL</span>
-        </div>
-      </div>
+  <div class="w-full h-full flex items-center justify-between mt-5 px-5">
+    <!-- Products added -->
 
-      <!-- Price div -->
-      <div class="flex items-center justify-center">
-        <span class="font-thin text-5xl">$</span>
-        <p class="text-5xl font-thin">50</p>
-      </div>
+    <div class="w-[54%] h-full flex flex-col items-center justify-center">
+      <% for(let item of dataItem) {%>
+        <div class="w-[100%] h-[200px] flex border-b-[1.5px] border-black/20 mt-3">
+          <!-- Image div -->
+          <div class="w-[250px] mr-4">
+            <img
+              src="<%= item.productImg %>"
+              alt="" />
+          </div>
+
+          <!-- Details div -->
+          <div class="w-[50%] flex flex-col justify-around mr-10">
+            <div>
+              <span class="font-bold mr-3 text-xl">Product :</span>
+              <span class="font-extralight text-xl"><%= item.productTitle%></span>
+            </div>
+            <div>
+              <span class="font-bold mr-2 text-xl">Id :</span>
+              <span class="font-extralight text-xl"><%= item.productId%></span>
+            </div>
+            <div>
+              <span class="font-bold mr-2 text-xl">Color :</span>
+              <span class="font-extralight text-xl"><%= item.color%></span>
+            </div>
+            <div>
+              <span class="font-bold mr-2 text-xl">Size :</span>
+              <span class="font-extralight text-xl"><%= item.size%></span>
+            </div>
+
+          </div>
+
+          <!-- Price div -->
+          <div class="flex items-center justify-center">
+            <span class="font-thin text-5xl">$</span>
+            <% let totalAmount = Math.ceil(item.amount * item.quantity) %>
+           
+            <% subtotal += totalAmount%>
+            <p class="text-5xl font-thin"><%= totalAmount %></p>
+          </div>
+        </div>
+        <% } %>
     </div>
 
-    <!-- 22 -->
-    <div class="w-[100%] h-[200px] flex border-b-[1.5px] border-black/20 mt-3">
-      <!-- Image div -->
-      <div class="w-[250px] mr-4">
-        <img
-          src="https://images.unsplash.com/photo-1583746474811-0fbe4ca15e77?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGx1eHVyeSUyMGNsb3RoZXN8ZW58MHwwfDB8fHww"
-          alt=""
-        />
+    <!-- Checkout info -->
+    <div class="w-[30%] h-[400px] border-2 border-black rounded-lg flex flex-col justify-around px-4">
+      <h1 class="text-4xl text-center font-extralight">ORDER SUMMARY</h1>
+      
+      <div class="flex items-center justify-between">
+        <span class="text-lg font-medium">Subtotal</span>
+        <span class="text-lg font-medium">$ <%= subtotal %></span>
       </div>
-
-      <!-- Details div -->
-      <div class="w-[50%] flex flex-col justify-between mr-10">
-        <div>
-          <span class="font-bold mr-3 text-xl">Product :</span>
-          <span class="font-extralight text-xl">RAYBAN DARK</span>
-        </div>
-        <div>
-          <span class="font-bold mr-2 text-xl">Id :</span>
-          <span class="font-extralight text-xl">1234567890</span>
-        </div>
-        <div>
-          <span class="font-bold mr-2 text-xl">Color :</span>
-          <span class="font-extralight text-xl">BLACK</span>
-        </div>
-        <div>
-          <span class="font-bold mr-2 text-xl">Size :</span>
-          <span class="font-extralight text-xl">S</span>
-        </div>
+      <div class="flex items-center justify-between">
+        <span class="text-lg font-medium">Estimated Shipping</span>
+        <% let shipping = (5 / 100) * subtotal %>
+        <span class="text-lg font-medium">$ <%= shipping %></span>
       </div>
-
-      <!-- Price div -->
-      <div class="flex items-center justify-center">
-        <span class="font-thin text-5xl">$</span>
-        <p class="text-5xl font-thin">150</p>
+      <div class="flex items-center justify-between">
+        <span class="text-lg font-medium">Adjusted Amount</span>
+        <% let adjusted = Math.ceil(shipping) - shipping %>
+        <span class="text-lg font-medium">- $ <%= adjusted %></span>
       </div>
+      <div class="flex items-center justify-between">
+        <span class="text-xl font-semibold">Total</span>
+        <% let total = subtotal + shipping - adjusted %>
+        <span class="text-xl font-semibold">$ <%= total %></span>
+      </div>
+      <button
+        class="border-2 border-black w-full px-6 py-1 text-xl hover:bg-black hover:text-white transition duration-300 ease-in-out">
+        CHECKOUT NOW
+      </button>
     </div>
   </div>
-
-  <!-- Checkout info -->
-  <div
-    class="w-[30%] h-[400px] border-2 border-black rounded-lg flex flex-col justify-around px-4"
-  >
-    <h1 class="text-4xl text-center font-extralight">ORDER SUMMARY</h1>
-    <div class="flex items-center justify-between">
-      <span class="text-lg font-medium">Subtotal</span>
-      <span class="text-lg font-medium">$ 80</span>
-    </div>
-    <div class="flex items-center justify-between">
-      <span class="text-lg font-medium">Estimated Shipping</span>
-      <span class="text-lg font-medium">$ 6</span>
-    </div>
-    <div class="flex items-center justify-between">
-      <span class="text-lg font-medium">Shipping Discount</span>
-      <span class="text-lg font-medium">- $ 6</span>
-    </div>
-    <div class="flex items-center justify-between">
-      <span class="text-xl font-semibold">Total</span>
-      <span class="text-xl font-semibold">$ 80</span>
-    </div>
-    <button
-      class="border-2 border-black w-full px-6 py-1 text-xl hover:bg-black hover:text-white transition duration-300 ease-in-out"
-    >
-      CHECKOUT NOW
-    </button>
-  </div>
-</div>
