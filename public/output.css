@@ -635,6 +635,14 @@ body {
   inset: 0px;
 }
 
+.-top-\[0\.5px\]{
+  top: -0.5px;
+}
+
+.right-10{
+  right: 2.5rem;
+}
+
 .right-14{
   right: 3.5rem;
 }
@@ -651,84 +659,48 @@ body {
   top: 37px;
 }
 
-.top-6{
-  top: 1.5rem;
-}
-
-.-top-6{
-  top: -1.5rem;
-}
-
-.-top-4{
-  top: -1rem;
-}
-
-.-top-2{
-  top: -0.5rem;
-}
-
-.-left-2{
-  left: -0.5rem;
-}
-
-.-right-2{
-  right: -0.5rem;
-}
-
-.-right-10{
-  right: -2.5rem;
-}
-
-.right-10{
-  right: 2.5rem;
-}
-
 .right-8{
   right: 2rem;
 }
 
-.right-5{
-  right: 1.25rem;
+.right-0{
+  right: 0px;
 }
 
-.right-12{
-  right: 3rem;
+.right-20{
+  right: 5rem;
 }
 
-.-top-1{
-  top: -0.25rem;
+.right-16{
+  right: 4rem;
 }
 
-.-top-\[-2px\]{
-  top: 2px;
+.right-\[70px\]{
+  right: 70px;
 }
 
-.-top-\[-1\.1px\]{
-  top: 1.1px;
+.right-\[72px\]{
+  right: 72px;
 }
 
-.-top-\[-1\.5px\]{
-  top: 1.5px;
+.right-\[65px\]{
+  right: 65px;
 }
 
-.-top-\[2px\]{
-  top: -2px;
+.right-\[67px\]{
+  right: 67px;
 }
 
-.-top-\[2\.4px\]{
-  top: -2.4px;
+.right-\[50px\]{
+  right: 50px;
 }
 
-.-top-\[3px\]{
-  top: -3px;
+.right-\[45px\]{
+  right: 45px;
 }
 
-.-top-\[1px\]{
-  top: -1px;
-}
-
-.-top-\[0\.5px\]{
-  top: -0.5px;
+.right-\[40px\]{
+  right: 40px;
 }
 
 .z-0{
@@ -737,10 +709,6 @@ body {
 
 .z-10{
   z-index: 10;
-}
-
-.-z-10{
-  z-index: -10;
 }
 
 .mb-1{
@@ -1063,6 +1031,10 @@ body {
   scroll-behavior: smooth;
 }
 
+.rounded-2xl{
+  border-radius: 1rem;
+}
+
 .rounded-full{
   border-radius: 9999px;
 }
@@ -1073,10 +1045,6 @@ body {
 
 .rounded-md{
   border-radius: 0.375rem;
-}
-
-.rounded-2xl{
-  border-radius: 1rem;
 }
 
 .border-2{
@@ -1137,6 +1105,11 @@ body {
   background-color: rgb(253 186 116 / var(--tw-bg-opacity));
 }
 
+.bg-red-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1144,11 +1117,6 @@ body {
 
 .bg-white\/50{
   background-color: rgb(255 255 255 / 0.5);
-}
-
-.bg-red-400{
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-0{
@@ -1162,6 +1130,11 @@ body {
 
 .p-1{
   padding: 0.25rem;
+}
+
+.px-1{
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 
 .px-2{
@@ -1212,16 +1185,6 @@ body {
 .py-\[7px\]{
   padding-top: 7px;
   padding-bottom: 7px;
-}
-
-.px-1{
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
-.px-\[2px\]{
-  padding-left: 2px;
-  padding-right: 2px;
 }
 
 .text-center{

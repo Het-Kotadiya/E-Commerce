@@ -31,6 +31,27 @@
 
     <!-- Right Div -->
     <div class="w-[40%] sm:w-[25%] sm:mr-10 h-full flex items-center justify-around">
+      <% if (userAuthenticated) { %>
+        <form action="/logout" method="post">
+          <button class="links sm:inline border-2 border-black px-2">
+            Logout
+          </button>
+        </form>
+        <button class="links sm:inline border-2 border-black px-2">
+          Profile
+        </button>
+        <a href="/cart">
+          <div class="relative">
+           <% counter = 0 %>
+           <% for(let item of orderItem) {%>
+             <% counter++ %>
+             <% } %>
+           <span class="border-2 border-black px-2 bg-red-400 rounded-2xl fixed -top-[0.5px] right-[40px] z-10"><%= counter%></span>
+           <i class="fa-solid fa-cart-shopping text-black text-2xl cursor-pointer z-0">
+           </i>
+          </div>
+         </a>
+        <% } else { %>
       <a href="/login">
         <button class="links sm:inline border-2 border-black px-2">
           LogIn
@@ -40,17 +61,8 @@
           SignUp
         </button>
       </a>
-      <a href="/cart">
-       <div class="relative">
-        <% counter = 0 %>
-        <% for(let item of orderItem) {%>
-          <% counter++ %>
-          <% } %>
-        <span class="border-2 border-black px-1 bg-red-400 rounded-2xl fixed -top-[0.5px] right-10 z-10"><%= counter%></span>
-        <i class="fa-solid fa-cart-shopping text-black text-2xl cursor-pointer z-0">
-        </i>
-       </div>
-      </a>
+      
+      <% } %>
       <!-- <span class="absolute top-8 right-14 bg-orange-300 text-black rounded-full p-1 px-2 text-xs z-0 font-semibold">5</span> -->
     </div>
   </nav>

@@ -59,11 +59,21 @@ passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
+// Middleware to set userAuthenticated variable for all routes
+app.use((req, res, next) => {
+    if(req.user){
+        res.locals.userAuthenticated = true;
+    } else {
+        res.locals.userAuthenticated = false;
+    }
+    next();
+  });
+
 
 app.get('/', async (req, res) => {
     const dataItem = await Product.find({})
     const orderItem = await Order.find({})
-    res.render('listings/index.ejs', { dataItem: dataItem, orderItem: orderItem })
+    res.render('listings/index.ejs', { dataItem: dataItem, orderItem: orderItem, userAuthenticated: res.locals.userAuthenticated })
 })
 
 // This method routes HTTP GET requests to the specified callback function
@@ -161,6 +171,13 @@ app.post('/login', passport.authenticate('local', {
         res.redirect('/')
     }
 )
+
+app.post('/logout', function(req, res, next){
+    req.logout(function(err) {
+      if (err) { return next(err); }
+      res.redirect('/');
+    });
+  });
 
 app.get('/cart', async (req, res) => {
     if (req.user === undefined) {
