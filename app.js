@@ -62,7 +62,8 @@ passport.deserializeUser(User.deserializeUser())
 
 app.get('/', async (req, res) => {
     const dataItem = await Product.find({})
-    res.render('listings/index.ejs', { dataItem })
+    const orderItem = await Order.find({})
+    res.render('listings/index.ejs', { dataItem: dataItem, orderItem: orderItem })
 })
 
 // This method routes HTTP GET requests to the specified callback function
@@ -81,7 +82,8 @@ app.get('/products', async (req, res) => {
         filteredItems.sort((a, b) => b.price - a.price);
     }
 
-    res.render('listings/showProduct.ejs', { dataItem: dataItem, filteredItems: filteredItems })
+    const orderItem = await Order.find({})
+    res.render('listings/showProduct.ejs', { dataItem: dataItem, filteredItems: filteredItems, orderItem: orderItem })
 
 })
 
@@ -89,13 +91,15 @@ app.get('/products/:id', async (req, res) => {
     let { id } = req.params;
     const product = await Product.findById(id)
     const dataItem = await Product.find({})
-    res.render('listings/display.ejs', { product, dataItem })
+    const orderItem = await Order.find({})
+    res.render('listings/display.ejs', { product, dataItem, orderItem })
 })
 
 // login & signup
 app.get('/signup', async (req, res) => {
     const dataItem = await Product.find({})
-    res.render('listings/signup.ejs', { dataItem })
+    const orderItem = await Order.find({})
+    res.render('listings/signup.ejs', { dataItem, orderItem })
 })
 
 app.post('/signup', async (req, res) => {
@@ -115,33 +119,39 @@ app.post('/order/:id/:price', async (req, res) => {
     // console.log(req.params.price)
     // console.log(req.params.id)
     // console.log(req.body)
-    const product = await Product.findById(req.params.id)
-    let newOrder = new Order({
-        userId: req.user.id,
-        productId: req.params.id,
-        quantity: req.body.quantity,
-        size: req.body.size,
-        color: req.body.color,
-        amount: req.params.price,
-        productTitle: product.title,
-        productImg: product.img,
-    })
-    newOrder.save()
-    .then(savedOrder => {
-        // Successfully saved to the database
-        res.redirect('/products')
-    })
-    .catch(error => {
-        // Handle the error if the order couldn't be saved
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    });
-    
+    if (req.user === undefined) {
+        res.redirect('/login')
+    }
+    else {
+        const product = await Product.findById(req.params.id)
+        let newOrder = new Order({
+            userId: req.user.id,
+            productId: req.params.id,
+            quantity: req.body.quantity,
+            size: req.body.size,
+            color: req.body.color,
+            amount: req.params.price,
+            productTitle: product.title,
+            productImg: product.img,
+        })
+        newOrder.save()
+            .then(savedOrder => {
+                // Successfully saved to the database
+                res.redirect('/products')
+            })
+            .catch(error => {
+                // Handle the error if the order couldn't be saved
+                console.error(error);
+                res.status(500).json({ error: 'Internal Server Error' });
+            });
+    }
+
 })
 
 app.get('/login', async (req, res) => {
     const dataItem = await Product.find({})
-    res.render('listings/login.ejs', { dataItem })
+    const orderItem = await Order.find({})
+    res.render('listings/login.ejs', { dataItem, orderItem })
 })
 
 app.post('/login', passport.authenticate('local', {
@@ -153,8 +163,14 @@ app.post('/login', passport.authenticate('local', {
 )
 
 app.get('/cart', async (req, res) => {
-    const dataItem = await Order.find({ userId: req.user.id })
-    res.render('listings/cart.ejs', { dataItem })
+    if (req.user === undefined) {
+        res.redirect('/login')
+    } else {
+        const dataItem = await Order.find({ userId: req.user.id })
+        const orderItem = await Order.find({})
+        res.render('listings/cart.ejs', { dataItem, orderItem })
+    }
+
 })
 
 

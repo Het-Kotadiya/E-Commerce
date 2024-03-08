@@ -6,30 +6,17 @@
   </div> -->
   <nav class="w-full h-full bg-white flex items-center justify-around">
     <!-- Left Div -->
-    <div
-      class="hidden w-[35%] ml-10 h-full md:flex justify-center items-center"
-    >
-      <form
-        action="/search"
-        class="h-full md:flex justify-center items-center"
-        method="post"
-      >
-        <input
-          type="text"
-          placeholder="Search"
-          class="px-4 h-[70%] outline-none text-lg bg-gray-50 border-2 border-black"
-          name="productName"
-          list="productList"
-        />
+    <div class="hidden w-[35%] ml-10 h-full md:flex justify-center items-center">
+      <form action="/search" class="h-full md:flex justify-center items-center" method="post">
+        <input type="text" placeholder="Search"
+          class="px-4 h-[70%] outline-none text-lg bg-gray-50 border-2 border-black" name="productName"
+          list="productList" />
         <datalist id="productList">
           <% for(let item of dataItem) {%>
-          <option value="<%= item.title %>"></option>
-          <% } %>
+            <option value="<%= item.title %>"></option>
+            <% } %>
         </datalist>
-        <button
-          type="submit"
-          class="h-[70%] w-9 border-2 border-black border-l-0 bg-green-200 text-center"
-        >
+        <button type="submit" class="h-[70%] w-9 border-2 border-black border-l-0 bg-green-200 text-center">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </form>
@@ -37,27 +24,32 @@
 
     <!-- Mid Div Links -->
     <div class="w-[50%] h-full flex items-center justify-around ml-1">
-      <a href="/"><h1 class="text-4xl text-black">Bliss Cart</h1></a>
+      <a href="/">
+        <h1 class="text-4xl text-black">Bliss Cart</h1>
+      </a>
     </div>
 
     <!-- Right Div -->
-    <div
-      class="w-[40%] sm:w-[25%] sm:mr-10 h-full flex items-center justify-around"
-    >
+    <div class="w-[40%] sm:w-[25%] sm:mr-10 h-full flex items-center justify-around">
       <a href="/login">
         <button class="links sm:inline border-2 border-black px-2">
           LogIn
-        </button></a
-      >
+        </button></a>
       <a href="/signup">
         <button class="links hidden sm:inline border-2 border-black px-2">
           SignUp
         </button>
       </a>
       <a href="/cart">
-        <i
-          class="fa-solid fa-cart-shopping text-black text-xl cursor-pointer"
-        ></i>
+       <div class="relative">
+        <% counter = 0 %>
+        <% for(let item of orderItem) {%>
+          <% counter++ %>
+          <% } %>
+        <span class="border-2 border-black px-1 bg-red-400 rounded-2xl fixed -top-[0.5px] right-10 z-10"><%= counter%></span>
+        <i class="fa-solid fa-cart-shopping text-black text-2xl cursor-pointer z-0">
+        </i>
+       </div>
       </a>
       <!-- <span class="absolute top-8 right-14 bg-orange-300 text-black rounded-full p-1 px-2 text-xs z-0 font-semibold">5</span> -->
     </div>
