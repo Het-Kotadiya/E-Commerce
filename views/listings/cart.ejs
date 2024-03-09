@@ -38,11 +38,11 @@
 
           <!-- Price div -->
           <div class="flex items-center justify-center">
-            <span class="font-thin text-5xl">$</span>
+            <span class="font-thin text-5xl">&#8377;</span>
             <% let totalAmount = Math.ceil(item.amount * item.quantity) %>
            
             <% subtotal += totalAmount%>
-            <p class="text-5xl font-thin"><%= totalAmount %></p>
+            <p class="text-4xl font-thin"><%= Math.ceil(totalAmount * 83) %></p>
           </div>
         </div>
         <% } %>
@@ -54,22 +54,22 @@
       
       <div class="flex items-center justify-between">
         <span class="text-lg font-medium">Subtotal</span>
-        <span class="text-lg font-medium">$ <%= subtotal %></span>
+        <span class="text-lg font-medium">&#8377; <%= Math.ceil(subtotal * 83) %></span>
       </div>
       <div class="flex items-center justify-between">
         <span class="text-lg font-medium">Estimated Shipping</span>
         <% let shipping = (5 / 100) * subtotal %>
-        <span class="text-lg font-medium">$ <%= shipping %></span>
+        <span class="text-lg font-medium">&#8377; <%= Math.ceil(shipping * 83) %></span>
       </div>
       <div class="flex items-center justify-between">
         <span class="text-lg font-medium">Adjusted Amount</span>
         <% let adjusted = Math.ceil(shipping) - shipping %>
-        <span class="text-lg font-medium">- $ <%= adjusted %></span>
+        <span class="text-lg font-medium">- &#8377; <%= Math.ceil(adjusted * 83) %></span>
       </div>
       <div class="flex items-center justify-between">
         <span class="text-xl font-semibold">Total</span>
         <% let total = subtotal + shipping - adjusted %>
-        <span class="text-xl font-semibold">$ <%= total %></span>
+        <span class="text-xl font-semibold">&#8377; <%= Math.ceil(total * 83) %></span>
       </div>
       <button
         class="border-2 border-black w-full px-6 py-1 text-xl hover:bg-black hover:text-white transition duration-300 ease-in-out">
