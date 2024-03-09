@@ -61,13 +61,15 @@ passport.deserializeUser(User.deserializeUser())
 
 // Middleware to set userAuthenticated variable for all routes
 app.use((req, res, next) => {
-    if(req.user){
+    if (req.user) {
+        res.locals.userName = req.user.username;
+        res.locals.userId = req.user.id;
         res.locals.userAuthenticated = true;
     } else {
         res.locals.userAuthenticated = false;
     }
     next();
-  });
+});
 
 
 app.get('/', async (req, res) => {
@@ -95,6 +97,45 @@ app.get('/products', async (req, res) => {
     const orderItem = await Order.find({})
     res.render('listings/showProduct.ejs', { dataItem: dataItem, filteredItems: filteredItems, orderItem: orderItem })
 
+})
+
+app.get('/profile', async (req, res) => {
+    const dataItem = await Product.find({})
+    const orderItem = await Order.find({})
+    res.render('listings/profile.ejs', { dataItem: dataItem, orderItem: orderItem, userAuthenticated: res.locals.userAuthenticated, userName: res.locals.userName, userId: res.locals.userId })
+})
+
+app.post('/profile', (req, res) => {
+    let userId = req.user.id;
+    let username = req.user.username;
+    let password = req.user.password;
+    let mobile = req.body.mobile
+    let address = req.body.address;
+    if (req.body.username) {
+        username = req.body.username
+    }
+    if (req.body.password) {
+        password = req.body.password
+    }
+
+    const updateUserData = {
+        username: username,
+        mobile: mobile,
+        address: address,
+        password: password
+    }
+
+    User.updateMany(
+        { _id: userId },
+        { $set: updateUserData }
+    )
+        .then(result => {
+            console.log('User detail Update Successfull')
+            res.redirect('/')
+        })
+        .catch(err => {
+            console.log(err)
+        })
 })
 
 app.get('/products/:id', async (req, res) => {
@@ -172,12 +213,12 @@ app.post('/login', passport.authenticate('local', {
     }
 )
 
-app.post('/logout', function(req, res, next){
-    req.logout(function(err) {
-      if (err) { return next(err); }
-      res.redirect('/');
+app.post('/logout', function (req, res, next) {
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect('/');
     });
-  });
+});
 
 app.get('/cart', async (req, res) => {
     if (req.user === undefined) {

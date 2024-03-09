@@ -37,33 +37,38 @@
             Logout
           </button>
         </form>
-        <button class="links sm:inline border-2 border-black px-2">
-          Profile
-        </button>
+        <form action="/profile" method="get">
+          <button class="links sm:inline border-2 border-black px-2">
+            Profile
+          </button>
+        </form>
         <a href="/cart">
           <div class="relative">
-           <% counter = 0 %>
-           <% for(let item of orderItem) {%>
-             <% counter++ %>
-             <% } %>
-           <span class="border-2 border-black px-2 bg-red-400 rounded-2xl fixed -top-[0.5px] right-[40px] z-10"><%= counter%></span>
-           <i class="fa-solid fa-cart-shopping text-black text-2xl cursor-pointer z-0">
-           </i>
+            <% counter=0 %>
+              <% for(let item of orderItem) {%>
+                <% counter++ %>
+                  <% } %>
+                    <span
+                      class="border-2 border-black px-2 bg-red-400 rounded-2xl absolute -top-[10px] -right-[20px] z-10">
+                      <%= counter%>
+                    </span>
+                    <i class="fa-solid fa-cart-shopping text-black text-2xl cursor-pointer z-0">
+                    </i>
           </div>
-         </a>
+        </a>
         <% } else { %>
-      <a href="/login">
-        <button class="links sm:inline border-2 border-black px-2">
-          LogIn
-        </button></a>
-      <a href="/signup">
-        <button class="links hidden sm:inline border-2 border-black px-2">
-          SignUp
-        </button>
-      </a>
-      
-      <% } %>
-      <!-- <span class="absolute top-8 right-14 bg-orange-300 text-black rounded-full p-1 px-2 text-xs z-0 font-semibold">5</span> -->
+          <a href="/login">
+            <button class="links sm:inline border-2 border-black px-2">
+              LogIn
+            </button></a>
+          <a href="/signup">
+            <button class="links hidden sm:inline border-2 border-black px-2">
+              SignUp
+            </button>
+          </a>
+
+          <% } %>
+            <!-- <span class="absolute top-8 right-14 bg-orange-300 text-black rounded-full p-1 px-2 text-xs z-0 font-semibold">5</span> -->
     </div>
   </nav>
 </header>

@@ -48,9 +48,10 @@ Set(dataItem.flatMap(item => item.categories))] %>
       <div
         class="relative z-10 w-[50%] h-[10%] flex items-center justify-between"
       >
-        <i
+        <form action="/order/<%=item.id%>/<%= item.price%>" method="post">
+          <button type="submit"><i
           class="fa-solid fa-cart-shopping hidden group-hover:inline-block bg-white rounded-full h-[40px] w-[40px] text-center py-[7px] text-lg cursor-pointer"
-        ></i>
+        ></i></button></form>
         <a href="/products/<%= item.id%>">
           <i
             class="fa-solid fa-magnifying-glass hidden group-hover:inline-block bg-white rounded-full h-[40px] w-[40px] text-center py-[7px] text-lg cursor-pointer"
