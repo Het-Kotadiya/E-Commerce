@@ -13,9 +13,9 @@
         <%= product.desc %>
       </p>
       <div class="w-[150px] flex items-center justify-around mt-7">
-        <span class="font-thin text-5xl">$</span>
+        <span class="font-thin text-5xl">&#8377;</span>
         <p class="text-5xl font-thin">
-          <%= product.price %>
+          <%= Math.ceil(product.price * 83) %>
         </p>
       </div>
 

@@ -43,7 +43,7 @@ Set(dataItem.flatMap(item => item.categories))] %>
     <img src=" <%= item.img %> " alt="" class="h-full w-full object-cover" />
 
     <div
-      class="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 ease-in-out group-hover:bg-opacity-50 flex items-center justify-center"
+      class="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 ease-in-out group-hover:bg-opacity-50 flex flex-col items-center justify-center"
     >
       <div
         class="relative z-10 w-[50%] h-[10%] flex items-center justify-between"
@@ -61,6 +61,12 @@ Set(dataItem.flatMap(item => item.categories))] %>
           class="fa-regular fa-heart hidden group-hover:inline-block bg-white rounded-full h-[40px] w-[40px] text-center py-[7px] text-lg cursor-pointer"
         ></i>
       </div>
+      <div class="hidden group-hover:flex text-white mt-5">
+        <span class="font-thin text-5xl">&#8377;</span>
+        <p class="text-5xl font-thin">
+          <%= Math.ceil(item.price * 83) %>
+        </p>
+        </div>
     </div>
   </div>
   <% } %>
