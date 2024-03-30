@@ -234,8 +234,16 @@ app.get('/cart', async (req, res) => {
 app.get('/checkout' , async (req, res) => {
     const dataItem = await Product.find({})
     const orderItem = await Order.find({})
+    let address = req.user.address
+    let userName = req.user.username
+    res.render('listings/checkout.ejs', { dataItem, orderItem, address, userName })
+})
 
-    res.render('listings/checkout.ejs', { dataItem, orderItem })
+app.get('/confirm' , async (req, res) => {
+    const dataItem = await Product.find({})
+    const orderItem = await Order.find({})
+    const order = await Order.deleteMany({})
+    res.render('listings/confirm.ejs', {dataItem, orderItem})
 })
 
 app.post('/search', async (req, res) => {

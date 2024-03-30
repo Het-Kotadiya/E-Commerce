@@ -1,8 +1,8 @@
 <% layout('layouts/boilerplate') %>
 <div class="h-full w-full flex justify-center">
-   <form action="/" method="get" class="h-[500px] w-[550px] mt-5 mb-7 p-5 flex flex-col item-center border-2 border-black">
+   <form action="/confirm" method="get" class="h-[500px] w-[550px] mt-5 mb-7 p-5 flex flex-col item-center border-2 border-black">
     <div class="w-full h-10 mb-5 flex justify-center items-center text-3xl">
-        <h1 class="text-3xl">Placing order for username</h1>
+        <h1 class="text-3xl">Placing order for <%= userName %></h1>
     </div>
     <div class="mb-5 w-full text-2xl flex flex-col">
         <label for="pay">Mode of Payment</label>
@@ -10,7 +10,7 @@
     </div>
     <div class="text-2xl flex flex-col mb-5">
         <label for="address">Delivery Address</label>
-        <textarea name="" id="" cols="30" rows="5" class="resize-none rounded-md  px-3 text-lg border-[1.5px] border-black" readonly>address</textarea>
+        <textarea name="" id="" cols="30" rows="5" class="resize-none rounded-md  px-3 text-lg border-[1.5px] border-black" readonly><%=address%></textarea>
     </div>
     <div class="text-2xl mb-7">
         <% 
