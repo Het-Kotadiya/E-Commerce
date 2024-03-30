@@ -13,7 +13,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const flash = require('connect-flash')
 // const MongoStore = require('connect-mongo')
-const port = 8000
+const port = 8080
 
 const MONGO_URL = 'mongodb://127.0.0.1/shopping'
 
@@ -231,6 +231,12 @@ app.get('/cart', async (req, res) => {
 
 })
 
+app.get('/checkout' , async (req, res) => {
+    const dataItem = await Product.find({})
+    const orderItem = await Order.find({})
+
+    res.render('listings/checkout.ejs', { dataItem, orderItem })
+})
 
 app.post('/search', async (req, res) => {
     const productTitle = req.body.productName

@@ -1,79 +1,88 @@
-<% layout('layouts/boilerplate') %>
-<% let subtotal = 0 %>
-  <h1 class="text-4xl text-center mt-5 font-extralight">YOUR CART</h1>
+<% layout('layouts/boilerplate') %> <% let subtotal = 0 %>
+<h1 class="text-4xl text-center mt-5 font-extralight">YOUR CART</h1>
 
-  <div class="w-full h-full flex items-center justify-between mt-5 px-5">
-    <!-- Products added -->
+<div class="w-full h-full flex items-center justify-between mt-5 px-5">
+  <!-- Products added -->
 
-    <div class="w-[54%] h-full flex flex-col items-center justify-center">
-      <% for(let item of dataItem) {%>
-        <div class="w-[100%] h-[200px] flex border-b-[1.5px] border-black/20 mt-3">
-          <!-- Image div -->
-          <div class="w-[250px] mr-4">
-            <img
-              src="<%= item.productImg %>"
-              alt="" />
-          </div>
+  <div class="w-[54%] h-full flex flex-col items-center justify-center">
+    <% for(let item of dataItem) {%>
+    <div class="w-[100%] h-[200px] flex border-b-[1.5px] border-black/20 mt-3">
+      <!-- Image div -->
+      <div class="w-[250px] mr-4">
+        <img src="<%= item.productImg %>" alt="" />
+      </div>
 
-          <!-- Details div -->
-          <div class="w-[50%] flex flex-col justify-around mr-10">
-            <div>
-              <span class="font-bold mr-3 text-xl">Product :</span>
-              <span class="font-extralight text-xl"><%= item.productTitle%></span>
-            </div>
-            <div>
-              <span class="font-bold mr-2 text-xl">Id :</span>
-              <span class="font-extralight text-xl"><%= item.productId%></span>
-            </div>
-            <div>
-              <span class="font-bold mr-2 text-xl">Color :</span>
-              <span class="font-extralight text-xl"><%= item.color%></span>
-            </div>
-            <div>
-              <span class="font-bold mr-2 text-xl">Size :</span>
-              <span class="font-extralight text-xl"><%= item.size%></span>
-            </div>
-
-          </div>
-
-          <!-- Price div -->
-          <div class="flex items-center justify-center">
-            <span class="font-thin text-5xl">&#8377;</span>
-            <% let totalAmount = Math.ceil(item.amount * item.quantity) %>
-           
-            <% subtotal += totalAmount%>
-            <p class="text-4xl font-thin"><%= Math.ceil(totalAmount * 83) %></p>
-          </div>
+      <!-- Details div -->
+      <div class="w-[50%] flex flex-col justify-around mr-10">
+        <div>
+          <span class="font-bold mr-3 text-xl">Product :</span>
+          <span class="font-extralight text-xl"><%= item.productTitle%></span>
         </div>
-        <% } %>
-    </div>
+        <div>
+          <span class="font-bold mr-2 text-xl">Id :</span>
+          <span class="font-extralight text-xl"><%= item.productId%></span>
+        </div>
+        <div>
+          <span class="font-bold mr-2 text-xl">Color :</span>
+          <span class="font-extralight text-xl"><%= item.color%></span>
+        </div>
+        <div>
+          <span class="font-bold mr-2 text-xl">Size :</span>
+          <span class="font-extralight text-xl"><%= item.size%></span>
+        </div>
+      </div>
 
-    <!-- Checkout info -->
-    <div class="w-[30%] h-[400px] border-2 border-black rounded-lg flex flex-col justify-around px-4">
+      <!-- Price div -->
+      <div class="flex items-center justify-center">
+        <span class="font-thin text-5xl">&#8377;</span>
+        <% let totalAmount = Math.ceil(item.amount * item.quantity) %> <%
+        subtotal += totalAmount%>
+        <p class="text-4xl font-thin"><%= Math.ceil(totalAmount * 83) %></p>
+      </div>
+    </div>
+    <% } %>
+  </div>
+
+  <!-- Checkout info -->
+  <form action="/checkout" method="get"  class="w-[30%] h-[400px] border-2 border-black rounded-lg flex justify-around px-4">
+    <div
+      class="flex flex-col justify-around px-4"
+    >
       <h1 class="text-4xl text-center font-extralight">ORDER SUMMARY</h1>
-      
+
       <div class="flex items-center justify-between">
         <span class="text-lg font-medium">Subtotal</span>
-        <span class="text-lg font-medium">&#8377; <%= Math.ceil(subtotal * 83) %></span>
+        <span class="text-lg font-medium"
+          >&#8377; <%= Math.ceil(subtotal * 83) %></span
+        >
       </div>
       <div class="flex items-center justify-between">
         <span class="text-lg font-medium">Estimated Shipping</span>
         <% let shipping = (5 / 100) * subtotal %>
-        <span class="text-lg font-medium">&#8377; <%= Math.ceil(shipping * 83) %></span>
+        <span class="text-lg font-medium"
+          >&#8377; <%= Math.ceil(shipping * 83) %></span
+        >
       </div>
       <div class="flex items-center justify-between">
         <span class="text-lg font-medium">Adjusted Amount</span>
         <% let adjusted = Math.ceil(shipping) - shipping %>
-        <span class="text-lg font-medium">- &#8377; <%= Math.ceil(adjusted * 83) %></span>
+        <span class="text-lg font-medium"
+          >- &#8377; <%= Math.ceil(adjusted * 83) %></span
+        >
       </div>
       <div class="flex items-center justify-between">
         <span class="text-xl font-semibold">Total</span>
         <% let total = subtotal + shipping - adjusted %>
-        <span class="text-xl font-semibold">&#8377; <%= Math.ceil(total * 83) %></span>
+        <span class="text-xl font-semibold"
+          >&#8377; <%= Math.ceil(total * 83) %></span
+        >
       </div>
-      <button
-        class="border-2 border-black w-full px-6 py-1 text-xl hover:bg-black hover:text-white transition duration-300 ease-in-out">
+      <button 
+      type="submit"
+        class="border-2 border-black w-full px-6 py-1 text-xl hover:bg-black hover:text-white transition duration-300 ease-in-out"
+      >
         CHECKOUT NOW
       </button>
     </div>
-  </div>
+  </form>
+</div>
