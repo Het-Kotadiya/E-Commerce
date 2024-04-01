@@ -32,6 +32,13 @@
     <!-- Right Div -->
     <div class="w-[40%] sm:w-[25%] sm:mr-10 h-full flex items-center justify-around">
       <% if (userAuthenticated) { %>
+        <% if (isAdmin === 'admin') {%>
+          <form action="/upload" method="get">
+            <button class="links sm:inline border-2 border-black px-2">
+              Upload
+            </button>
+          </form>
+        <% } %>
         <form action="/logout" method="post">
           <button class="links sm:inline border-2 border-black px-2">
             Logout
@@ -42,6 +49,7 @@
             Profile
           </button>
         </form>
+        <% if (isAdmin !== 'admin') {%>
         <a href="/cart">
           <div class="relative">
             <% counter=0 %>
@@ -56,6 +64,7 @@
                     </i>
           </div>
         </a>
+        <% } %>
         <% } else { %>
           <a href="/login">
             <button class="links sm:inline border-2 border-black px-2">

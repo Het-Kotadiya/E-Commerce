@@ -93,7 +93,7 @@ app.get('/', async (req, res) => {
     const dataItem = await Product.find({});
     const orderItem = await Order.find({});
     // Render homepage with data
-    res.render('listings/index.ejs', { dataItem: dataItem, orderItem: orderItem, userAuthenticated: res.locals.userAuthenticated });
+    res.render('listings/index.ejs', { dataItem: dataItem, orderItem: orderItem, userAuthenticated: res.locals.userAuthenticated, isAdmin: res.locals.userName });
 });
 
 // Product listing route
@@ -116,7 +116,7 @@ app.get('/products', async (req, res) => {
     // Retrieve orders from database
     const orderItem = await Order.find({});
     // Render product listing page with data
-    res.render('listings/showProduct.ejs', { dataItem: dataItem, filteredItems: filteredItems, orderItem: orderItem });
+    res.render('listings/showProduct.ejs', { dataItem: dataItem, filteredItems: filteredItems, orderItem: orderItem, isAdmin: res.locals.userName });
 });
 
 // Profile route
@@ -125,7 +125,7 @@ app.get('/profile', async (req, res) => {
     const dataItem = await Product.find({});
     const orderItem = await Order.find({});
     // Render profile page with data and user information
-    res.render('listings/profile.ejs', { dataItem: dataItem, orderItem: orderItem, userAuthenticated: res.locals.userAuthenticated, userName: res.locals.userName, userId: res.locals.userId });
+    res.render('listings/profile.ejs', { dataItem: dataItem, orderItem: orderItem, userAuthenticated: res.locals.userAuthenticated, userName: res.locals.userName, userId: res.locals.userId, isAdmin: res.locals.userName });
 });
 
 // Update profile route
@@ -170,7 +170,7 @@ app.get('/products/:id', async (req, res) => {
     const product = await Product.findById(id)
     const dataItem = await Product.find({})
     const orderItem = await Order.find({})
-    res.render('listings/display.ejs', { product, dataItem, orderItem })
+    res.render('listings/display.ejs', { product, dataItem, orderItem, isAdmin: res.locals.userName })
 })
 
 // Signup route
@@ -178,7 +178,7 @@ app.get('/signup', async (req, res) => {
     const dataItem = await Product.find({})
     const orderItem = await Order.find({})
     // Render signup page
-    res.render('listings/signup.ejs', { dataItem, orderItem })
+    res.render('listings/signup.ejs', { dataItem, orderItem, isAdmin: res.locals.userName })
 })
 
 
@@ -236,7 +236,7 @@ app.post('/order/:id/:price', async (req, res) => {
 app.get('/login', async (req, res) => {
     const dataItem = await Product.find({})
     const orderItem = await Order.find({})
-    res.render('listings/login.ejs', { dataItem, orderItem })
+    res.render('listings/login.ejs', { dataItem, orderItem, isAdmin: res.locals.userName })
 })
 
 // Login form submission route
@@ -263,7 +263,7 @@ app.get('/cart', async (req, res) => {
     } else {
         const dataItem = await Order.find({ userId: req.user.id })
         const orderItem = await Order.find({})
-        res.render('listings/cart.ejs', { dataItem, orderItem })
+        res.render('listings/cart.ejs', { dataItem, orderItem, isAdmin: res.locals.userName })
     }
 
 })
@@ -274,7 +274,7 @@ app.get('/checkout', async (req, res) => {
     const orderItem = await Order.find({})
     let address = req.user.address
     let userName = req.user.username
-    res.render('listings/checkout.ejs', { dataItem, orderItem, address, userName })
+    res.render('listings/checkout.ejs', { dataItem, orderItem, address, userName, isAdmin: res.locals.userName })
 })
 
 // Confirmation route 
@@ -282,7 +282,19 @@ app.get('/confirm', async (req, res) => {
     const dataItem = await Product.find({})
     const orderItem = await Order.find({})
     const order = await Order.deleteMany({})
-    res.render('listings/confirm.ejs', { dataItem, orderItem })
+    res.render('listings/confirm.ejs', { dataItem, orderItem, isAdmin: res.locals.userName })
+})
+
+app.get('/upload', async (req, res) => {
+    const dataItem = await Product.find({})
+    const orderItem = await Order.find({})
+    res.render('listings/upload.ejs', {dataItem, orderItem, isAdmin: res.locals.userName})
+})
+
+// Incomplete Code
+app.post('/upload', (req, res) => {
+    console.log(req.body)
+    res.send('Hello')
 })
 
 // Search Route
