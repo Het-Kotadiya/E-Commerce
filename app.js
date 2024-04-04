@@ -291,7 +291,7 @@ app.get('/upload', async (req, res) => {
     res.render('listings/upload.ejs', {dataItem, orderItem, isAdmin: res.locals.userName})
 })
 
-// Incomplete Code
+// Product Upload
 app.post('/upload', async (req, res) => {
     console.log(req.body)
     const product = await Product.find({})
