@@ -868,6 +868,10 @@ body {
   height: 100vh;
 }
 
+.h-\[750px\]{
+  height: 750px;
+}
+
 .w-10{
   width: 2.5rem;
 }
@@ -960,6 +964,10 @@ body {
   width: 85%;
 }
 
+.w-\[90\%\]{
+  width: 90%;
+}
+
 .w-\[99vw\]{
   width: 99vw;
 }
@@ -975,10 +983,6 @@ body {
 
 .w-full{
   width: 100%;
-}
-
-.w-\[90\%\]{
-  width: 90%;
 }
 
 .flex-shrink-0{

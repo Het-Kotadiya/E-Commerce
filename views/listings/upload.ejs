@@ -1,35 +1,41 @@
 <% layout('layouts/boilerplate') %>
     <div class="w-[full] h-screen sm:h-full flex items-center justify-center sm:mt-8">
-        <div class="h-[700px] w-[600px] flex flex-col items-center border-2 border-black">
+        <div class="h-[750px] w-[600px] flex flex-col items-center border-2 border-black">
             <div class=" h-[70%] w-[90%] mt-4">
                 <form action="/upload" method="post">
                     <div class="flex flex-col mb-4">
-                        <label for="Product Name" class="text-2xl mb-1">Product Name</label>
-                        <input type="text" name="Product Name" id="Product Name"
+                        <label for="Title" class="text-2xl mb-1">Product Name</label>
+                        <input type="text" name="Title" id="Title"
                             class="rounded-md h-8 px-3 text-lg border-[1.5px] border-black" required/>
                     </div>
 
                     <div class="flex flex-col mb-4">
-                        <label for="Product Description" class="text-2xl mb-1">Product Description</label>
-                        <textarea name="Product Description" id="Product Description" cols="30" rows="5"
+                        <label for="Description" class="text-2xl mb-1">Product Description</label>
+                        <textarea name="Description" id="Description" cols="30" rows="5"
                             class="rounded-md text-lg border-[1.5px] border-black px-3" required></textarea>
                     </div>
 
                     <div class="flex flex-col mb-4">
-                        <label for="Product Image" class="text-2xl mb-1">Product Image</label>
-                        <input type="url" name="Product Image" id="Product Image"
+                        <label for="Image" class="text-2xl mb-1">Product Image</label>
+                        <input type="url" name="Image" id="Image"
                             class="rounded-md h-8 px-3 text-lg border-[1.5px] border-black" required />
                     </div>
 
                     <div class="flex flex-col mb-4">
-                        <label for="Product Color" class="text-2xl mb-1">Product Color</label>
-                        <input type="text" name="Product Color" id="Product Color"
+                        <label for="Color" class="text-2xl mb-1">Product Color</label>
+                        <input type="text" name="Color" id="Color"
                             class="rounded-md h-8 px-3 text-lg border-[1.5px] border-black" required/>
                     </div>
 
                     <div class="flex flex-col mb-4">
-                        <label for="Product Color" class="text-2xl mb-1">Product Size</label>
-                        <input type="text" name="Product Size" id="Product Size"
+                        <label for="Size" class="text-2xl mb-1">Product Size</label>
+                        <input type="text" name="Size" id="Size"
+                            class="rounded-md h-8 px-3 text-lg border-[1.5px] border-black" required/>
+                    </div>
+
+                    <div class="flex flex-col mb-4">
+                        <label for="Price" class="text-2xl mb-1">Product Price</label>
+                        <input type="text" name="Price" id="Price"
                             class="rounded-md h-8 px-3 text-lg border-[1.5px] border-black" required/>
                     </div>
                     <button

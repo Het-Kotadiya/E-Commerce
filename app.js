@@ -292,9 +292,27 @@ app.get('/upload', async (req, res) => {
 })
 
 // Incomplete Code
-app.post('/upload', (req, res) => {
+app.post('/upload', async (req, res) => {
     console.log(req.body)
-    res.send('Hello')
+    const product = await Product.find({})
+    let newProduct = new Product({
+        title: req.body.Title,
+        desc: req.body.Description,
+        img: req.body.Image,
+        size: req.body.Size,
+        color: req.body.Color,
+        price: req.body.Price
+    })
+    newProduct.save()
+        .then(savedOrder => {
+            // Successfully saved to the database
+            res.redirect('/products')
+        })
+        .catch(error => {
+            // Handle the error if the order couldn't be saved
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
 })
 
 // Search Route
