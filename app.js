@@ -323,6 +323,10 @@ app.post('/search', async (req, res) => {
 
 })
 
+app.get('/edit', (req, res) => {
+    res.send("<h1>Edit Page</h1")
+})
+
 // This method listens for the connection on the specified port.
 // It is placed at end of the code because server must be configured fully before accepting the incoming requests
 app.listen(port, () => {

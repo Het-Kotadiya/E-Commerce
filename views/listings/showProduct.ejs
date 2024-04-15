@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %> <% let uniqueCategories = [...new
 Set(dataItem.flatMap(item => item.categories))] %>
-
+<% if (isAdmin !== 'admin') {%>
 <div class="w-[100%] h-11 flex sm:flex-row items-center justify-around mt-3">
   <form
     action="/products"
@@ -34,6 +34,7 @@ Set(dataItem.flatMap(item => item.categories))] %>
     </button>
   </form>
 </div>
+<% } %>
 
 <div
   class="w-full h-full mt-3 px-4 grid grid-rows-auto sm:grid-cols-3 gap-1 grid-cols-auto"
@@ -45,6 +46,7 @@ Set(dataItem.flatMap(item => item.categories))] %>
     <div
       class="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 ease-in-out group-hover:bg-opacity-50 flex flex-col items-center justify-center"
     >
+    <% if (isAdmin !== 'admin') {%>
       <div
         class="relative z-10 w-[50%] h-[10%] flex items-center justify-between"
       >
@@ -61,12 +63,27 @@ Set(dataItem.flatMap(item => item.categories))] %>
           class="fa-regular fa-heart hidden group-hover:inline-block bg-white rounded-full h-[40px] w-[40px] text-center py-[7px] text-lg cursor-pointer"
         ></i>
       </div>
+      
       <div class="hidden group-hover:flex text-white mt-5">
         <span class="font-thin text-5xl">&#8377;</span>
         <p class="text-5xl font-thin">
           <%= Math.ceil(item.price * 83) %>
         </p>
         </div>
+        <% } else {%>
+      <div
+        class="relative z-10 w-[50%] h-[10%] flex items-center justify-center"
+      >
+      <form action="/edit" method="get">
+        <button type="submit">
+          <i
+            class="fa-solid fa-pencil hidden group-hover:inline-block bg-white rounded-full h-[40px] w-[40px] text-center py-[7px] text-lg cursor-pointer"
+          ></i>
+        </button>
+      </form>
+
+    </div>
+      <% } %>
     </div>
   </div>
   <% } %>
