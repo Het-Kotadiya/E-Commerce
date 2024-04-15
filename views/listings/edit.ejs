@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') %>
+    <div class="w-[full] h-screen sm:h-full flex items-center justify-center sm:mt-8">
+        <div class="h-[650px] w-[500px] flex flex-col items-center border-2 border-black">
+            <div class=" h-[70%] w-[90%] mt-4">
+                <form action="/edit/<%= product.id %>" method="post">
+                    <div class="flex flex-col mb-4">
+                        <label for="id" class="text-2xl mb-1">Product Name</label>
+                        <input type="text" name="id" id="id"
+                            class="rounded-md h-8 px-3 text-lg border-[1.5px] border-black placeholder-black" placeholder="<%= product.id %>" readonly/>
+                          
+                    </div>
+                    <div class="flex flex-col mb-4">
+                        <label for="Title" class="text-2xl mb-1">Product Name</label>
+                        <input type="text" name="Title" id="Title"
+                            class="rounded-md h-8 px-3 text-lg border-[1.5px] border-black placeholder-black" placeholder="<%= product.title %>" />
+                          
+                    </div>
+
+                    <div class="flex flex-col mb-4">
+                        <label for="Description" class="text-2xl mb-1">Product Description</label>
+                        <textarea name="Description" id="Description" cols="30" rows="5"
+                            class="rounded-md text-lg border-[1.5px] border-black px-3 placeholder-black" placeholder="<%= product.desc %>" ></textarea>
+                    </div>
+
+                    <div class="flex flex-col mb-4">
+                        <label for="Image" class="text-2xl mb-1">Product Image (URL)</label>
+                        <input type="url" name="Image" id="Image"
+                            class="rounded-md h-8 px-3 text-lg border-[1.5px] border-black placeholder-black" placeholder="<%= product.img %>"  />
+                    </div>
+
+
+                    <div class="flex flex-col mb-4">
+                        <label for="Price" class="text-2xl mb-1">Product Price ($)</label>
+                        <input type="text" name="Price" id="Price"
+                            class="rounded-md h-8 px-3 text-lg border-[1.5px] border-black placeholder-black" placeholder="<%= product.price %>" />
+                    </div>
+                    <button
+                        class="w-full text-3xl border-[1.5px] border-black bg-green-200 py-1 hover:bg-green-300 font-medium drop-shadow-xl mt-4"
+                        type="submit">
+                        Edit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>

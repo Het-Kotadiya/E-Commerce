@@ -835,6 +835,10 @@ body {
   height: 545px;
 }
 
+.h-\[650px\]{
+  height: 650px;
+}
+
 .h-\[70\%\]{
   height: 70%;
 }
@@ -942,6 +946,10 @@ body {
 
 .w-\[50\%\]{
   width: 50%;
+}
+
+.w-\[500px\]{
+  width: 500px;
 }
 
 .w-\[54\%\]{
@@ -1327,6 +1335,16 @@ body {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.placeholder-black::-moz-placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-placeholder-opacity));
+}
+
+.placeholder-black::placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-placeholder-opacity));
 }
 
 .outline-none{

@@ -323,8 +323,35 @@ app.post('/search', async (req, res) => {
 
 })
 
-app.get('/edit', (req, res) => {
-    res.send("<h1>Edit Page</h1")
+app.get('/edit/:id', async (req, res) => {
+    // console.log(req.params)
+    let { id } = req.params;
+    const product = await Product.findById(id)
+    const dataItem = await Product.find({})
+    const orderItem = await Order.find({})
+    res.render('listings/edit.ejs', { product, dataItem, orderItem, isAdmin: res.locals.userName })
+
+})
+
+app.post('/edit/:id', async (req, res) => {
+    // console.log(req.body)
+    const id = req.params.id;
+    const title = req.body.Title;
+    const desc = req.body.Description;
+    const img = req.body.Image;
+    const price = req.body.Price;
+    
+    const updateFields = {};
+    if (title !== '') updateFields.title = title;
+    if (desc !== '') updateFields.desc = desc;
+    if (img !== '') updateFields.img = img;
+    if (price !== '') updateFields.price = price;
+    
+    
+    const updatedProduct = await Product.findByIdAndUpdate(id, updateFields, { new: true });
+
+    res.redirect('/products');
+
 })
 
 // This method listens for the connection on the specified port.
