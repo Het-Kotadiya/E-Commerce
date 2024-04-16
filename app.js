@@ -354,6 +354,12 @@ app.post('/edit/:id', async (req, res) => {
 
 })
 
+app.post('/delete/:id', async (req, res) => {
+    const id = req.params.id;
+    const product = await Product.findByIdAndDelete(id)
+    res.redirect('/products')
+})
+
 // This method listens for the connection on the specified port.
 // It is placed at end of the code because server must be configured fully before accepting the incoming requests
 app.listen(port, () => {
