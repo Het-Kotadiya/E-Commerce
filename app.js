@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express'); // Import the express framework
 const app = express(); // Create an express app instance
 const cookieParser = require('cookie-parser'); // Middleware for parsing cookies
@@ -15,7 +16,8 @@ const flash = require('connect-flash'); // Middleware for displaying flash messa
 const port = 8080; // Port for server to listen on
 
 // MongoDB connection URL
-const MONGO_URL = 'mongodb://127.0.0.1/shopping'
+// const MONGO_URL = process.env.ATLASDB_URL;
+const dbURI = process.env.ATLASDB_URL;
 
 // Main function to initialize the application
 main()
@@ -28,7 +30,7 @@ main()
 
 // Function to connect to MongoDB
 async function main() {
-    await mongoose.connect(MONGO_URL) // Connect to MongoDB
+    await mongoose.connect(dbURI) // Connect to MongoDB
 }
 
 // Middleware setup
@@ -288,7 +290,7 @@ app.get('/confirm', async (req, res) => {
 app.get('/upload', async (req, res) => {
     const dataItem = await Product.find({})
     const orderItem = await Order.find({})
-    res.render('listings/upload.ejs', {dataItem, orderItem, isAdmin: res.locals.userName})
+    res.render('listings/upload.ejs', { dataItem, orderItem, isAdmin: res.locals.userName })
 })
 
 // Product Upload
@@ -340,14 +342,14 @@ app.post('/edit/:id', async (req, res) => {
     const desc = req.body.Description;
     const img = req.body.Image;
     const price = req.body.Price;
-    
+
     const updateFields = {};
     if (title !== '') updateFields.title = title;
     if (desc !== '') updateFields.desc = desc;
     if (img !== '') updateFields.img = img;
     if (price !== '') updateFields.price = price;
-    
-    
+
+
     const updatedProduct = await Product.findByIdAndUpdate(id, updateFields, { new: true });
 
     res.redirect('/products');
